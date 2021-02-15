@@ -10,7 +10,7 @@ function TvShows() {
 
   return (
     <>
-      <SortShows tvShows={shows.name}
+      <SortShows shows={shows.name}
       />
       <div>
         {shows.map((show, i) => (

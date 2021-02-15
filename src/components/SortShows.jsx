@@ -1,9 +1,9 @@
 import React, {useMemo} from 'react';
 import tvshows from './tvShows.json';
 
-const SortShows = () => {
+const SortShows = ({shows}) => {
 
-  const shows = useMemo(() => tvshows, []);
+  //const shows = useMemo(() => tvshows, []);
 
   const sortTvShows = () => {
       return shows.sort(function(a, b){

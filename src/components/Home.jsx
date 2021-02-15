@@ -3,7 +3,10 @@ import Header from './shared/Header'
 
 const Home = () => {
   return (
+    <>
     <Header title="Home"/>
+    </>
+   
   );
 }
  
