@@ -1,16 +1,24 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState} from 'react';
+import Header from './shared/Header'
 
 import tvshows from './tvShows.json';
 import SortShows from './SortShows';
+import FilterShows from './FilterShows';
 
-function TvShows() {
+const DisplayTvShows = () => {
 
-  const shows = useMemo(() => tvshows, []);
+  //const shows = useMemo(() => tvshows, []);
+  const [shows, setShows] = useState(tvshows);
   
 
   return (
     <>
-      <SortShows shows={shows.name}
+      <Header title="Tv Shows"/>
+      <SortShows shows={shows} setShows={setShows}
+      />
+      <br/>
+      <br/>
+      <FilterShows shows={shows} setShows={setShows}
       />
       <div>
         {shows.map((show, i) => (
@@ -24,4 +32,4 @@ function TvShows() {
   );
 }
 
-export default TvShows;
+export default DisplayTvShows;

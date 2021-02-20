@@ -1,16 +1,24 @@
-import React, {useMemo} from 'react';
-import tvshows from './tvShows.json';
+import React, {useState} from 'react';
+// import tvshows from './tvShows.json';
 
-const SortShows = ({shows}) => {
+const SortShows = ({shows, setShows}) => {
 
   //const shows = useMemo(() => tvshows, []);
+  const [direction, setDirection] = useState('asc'); 
 
   const sortTvShows = () => {
-      return shows.sort(function(a, b){
-        var nameA = a.name;
-        var nameB = b.name;
-        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
-      });
+    // console.log(shows);
+    const sorted = shows.sort((a, b) => {
+      if(direction === 'asc'){
+        setDirection('dec');
+        return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+      }
+      else{
+        setDirection('asc');
+        return a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1;
+      }
+    });
+      setShows([...sorted]);
   }
 
   return ( 
