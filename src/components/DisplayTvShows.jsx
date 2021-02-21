@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
 import Header from './shared/Header'
 
 import tvshows from './tvShows.json';
@@ -7,27 +7,33 @@ import FilterShows from './FilterShows';
 
 const DisplayTvShows = () => {
 
-  //const shows = useMemo(() => tvshows, []);
-  const [shows, setShows] = useState(tvshows);
+  const showsData = useMemo(() => tvshows, []);
+  const [shows, setShows] = useState(showsData);
   
 
   return (
     <>
       <Header title="Tv Shows"/>
-      <SortShows shows={shows} setShows={setShows}
-      />
-      <br/>
-      <br/>
-      <FilterShows shows={shows} setShows={setShows}
-      />
-      <div>
-        {shows.map((show, i) => (
-        <div key={i}>
+      <div className="container mt-4">
+        <SortShows shows={shows} setShows={setShows}
+        />
+        <br/>
+        <br/>
+        <FilterShows shows={shows} setShows={setShows}
+        />
+      </div>
+      
+      <div className="container mt-5">
+        <div>
+         {shows.map((show, i) => (
+         <div key={i}>
           <h3 style={{paddingRight:'10px'}}>{show.name}</h3>
           <p style={{paddingRight:'10px'}}>{show.overview}</p>
+         </div>
+         ))}
         </div>
-        ))}
       </div>
+      
     </>
   );
 }
