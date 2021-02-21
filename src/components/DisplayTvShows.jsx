@@ -23,7 +23,7 @@ const DisplayTvShows = () => {
         />
       </div>
       
-      <div className="container mt-5">
+      <div className="s mt-5">
         <div>
          {shows.map((show, i) => (
          <div key={i}>
